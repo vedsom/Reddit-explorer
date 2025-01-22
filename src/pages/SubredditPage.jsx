@@ -7,27 +7,11 @@ import SearchBar from '../components/ui/SearchBar';
 import SearchResults from '../components/search/SearchResults';
 import { usePosts } from '../hooks/usePosts';
 import { useSearch } from '../hooks/useSearch';
-import { MobileNav, MenuButton } from '../components/layout/MobileNav';
-import { Menu } from 'lucide-react';
+
 
 const PageLayout = styled.div`
   display: flex;
   min-height: 100vh;
-`;
-const MobileHeader = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  background: white;
-  z-index: 30;
-  display: none;
-  border-bottom: 1px solid var(--color-border);
-
-  @media (max-width: 768px) {
-    display: block;
-  }
 `;
 
 const ContentContainer = styled.div`
@@ -62,7 +46,6 @@ const SubredditPage = () => {
   const [isSearching, setIsSearching] = useState(false);
   const { data: posts, loading: postsLoading, error: postsError } = usePosts(subredditId);
   const { searchResults, loading: searchLoading, error: searchError, performSearch } = useSearch();
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const handleSearch = (query) => {
     setIsSearching(true);
     // Add subreddit-specific search
